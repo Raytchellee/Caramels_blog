@@ -2,7 +2,8 @@ const jwt = require('jsonwebtoken');
 const expressJwt = require('express-jwt');
 
 exports.login = (req, res) => {
-    console.log('hereeeeeeee', req);
+    // console.log('hereeeeeeee', req);
+    console.log('Reached Login');
     const { name, password } = req.body;
     if (password === process.env.PASSWORD) {
         // generate token and send to client/react

@@ -23,10 +23,6 @@ mongoose
     .then(() => console.log('DB connected'))
     .catch(err => console.log(err));
 
-// if (process.env.NODE_ENV === "development") {
-//   app.use(cors({ origin: `${process.env.CLIENT_URL}` }));
-// }
-
 // middlewares
 app.use(cors());
 app.use(morgan('dev'));
