@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
-// const cors = require('cors');
+const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
@@ -28,14 +28,11 @@ mongoose
 // }
 
 // middlewares
-// app.use(cors());
+app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 
 // route middleware
-app.use('/', function(){
-    return 'Hello there!';
-})
 app.use('/api', postRoutes);
 app.use('/api', authRoutes);
 
