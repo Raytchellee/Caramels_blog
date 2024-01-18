@@ -33,6 +33,9 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 
 // route middleware
+app.use('/', function(){
+    return 'Hello there!';
+})
 app.use('/api', postRoutes);
 app.use('/api', authRoutes);
 
