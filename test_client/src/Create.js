@@ -5,6 +5,9 @@ import ReactQuill from "react-quill";
 import { getUser, getToken } from "./helpers";
 import "react-quill/dist/quill.snow.css";
 import "./Create.css";
+import { toast } from 'react-toastify';
+import { useHistory } from 'react-router-dom';
+
 const modules = {
   toolbar: [
     [{ font: [] }],
@@ -26,6 +29,7 @@ const Create = () => {
     user: getUser(),
   });
   const [content, setContent] = useState("");
+  const history = useHistory();
 
   // rich text editor handle change
   const handleContent = (event) => {
@@ -61,11 +65,13 @@ const Create = () => {
         setState({ ...state, title: "", user: "" });
         setContent("");
         // show success alert
-        alert(`${response.data.title} blog post is created`);
+        // alert(`${response.data.title} blog post is created`);
+        toast.success(`${response.data.title} blog post is created`);
+        history.push('/');
       })
       .catch((error) => {
         console.log(error.response);
-        alert(error.response.data.error);
+        toast.error(error.response.data.error);
       });
   };
 
@@ -97,7 +103,7 @@ const Create = () => {
             theme="snow"
             className=""
             placeholder="Write something.."
-            style={{ border: "1px solid yellow" }}
+            style={{ border: "1px solid #D6A0E3" }}
           />
         </div>
         <div className="form-group">

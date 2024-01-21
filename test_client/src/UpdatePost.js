@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Nav from "./Nav";
 import ReactQuill from "react-quill";
+import { toast } from 'react-toastify';
+import { useHistory } from 'react-router-dom';
+import Nav from "./Nav";
 import { getToken } from "./helpers";
 import "react-quill/dist/quill.snow.css";
 import "./UpdatePost.css";
+
+
 const modules = {
   toolbar: [
     [{ font: [] }],
@@ -28,6 +32,8 @@ const UpdatePost = (props) => {
   const { title, slug, user } = state;
 
   const [content, setContent] = useState("");
+  const history = useHistory();
+
 
   // rich text editor handle change
   const handleContent = (event) => {
@@ -43,7 +49,7 @@ const UpdatePost = (props) => {
         setState({ ...state, title, slug, user });
         setContent(content);
       })
-      .catch((error) => alert("Error loading single post"));
+      .catch((error) => toast.error("Error loading single post"));
   }, []);
 
   // onchange event handler
@@ -71,11 +77,12 @@ const UpdatePost = (props) => {
         // empty state
         setState({ ...state, title, content, slug, user });
         // show sucess alert
-        alert(`${title} blog post is updated`);
+        toast.success(`${title} blog post is updated`);
+        history.push('/');
       })
       .catch((error) => {
         console.log(error.response);
-        alert(error.response.data.error);
+        toast.error(error.response.data.error);
       });
   };
 

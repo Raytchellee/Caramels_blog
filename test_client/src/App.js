@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import renderHTML from "react-render-html";
 import { getUser, getToken } from "./helpers";
 import "./App.css";
+import { toast } from 'react-toastify';
 
 const App = () => {
   const [posts, setPosts] = useState([]);
@@ -16,7 +17,7 @@ const App = () => {
         // console.log(response);
         setPosts(response.data);
       })
-      .catch((error) => alert("Error in fetching posts"));
+      .catch((error) => toast.error("Error in fetching posts"));
   };
 
   useEffect(() => {
@@ -39,35 +40,33 @@ const App = () => {
         },
       })
       .then((response) => {
-        alert(response.data.message);
+        toast.info(response.data.message);
         fetchPosts();
       })
-      .catch((error) => alert("Error deleting post"));
+      .catch((error) => toast.info("Error deleting post"));
   };
 
   return (
     <div className="container pb-5">
       <Nav />
       <br />
-      <h1 className="title">ValueBlog</h1>
-      <h5 className="tagline">Value for your Time</h5>
-      <hr />
+      <div className="post-container">
       {posts.map((post, i) => (
         <div
           className="row"
           key={post._id}
-          style={{ borderBottom: "1px solid yellow" }}
+          style={{ borderBottom: "1px solid #d381e8" }}
         >
           <div className="col pt-3 pb-2">
             <div className="row">
               <div className="col-md-10">
                 <Link to={`/post/${post.slug}`}>
-                  <h2>{post.title}</h2>
+                  <h2 className="post-title">{post.title}</h2>
                 </Link>
                 <div className="lead pt-3">
                   {renderHTML(post.content.substring(0, 500))}
                 </div>
-                <p>
+                <p className="foot-section">
                   Author <span className="badge">{post.user}</span> Published on{" "}
                   <span className="badge">
                     {new Date(post.createdAt).toLocaleString()}
@@ -79,13 +78,13 @@ const App = () => {
                 <div className="col-md-2">
                   <Link
                     to={`/post/update/${post.slug}`}
-                    className="btn btn-sm btn-outline-warning"
+                    className="btn btn-sm update"
                   >
                     Update
                   </Link>
                   <button
                     onClick={() => deleteConfirm(post.slug)}
-                    className="btn btn-sm btn-outline-danger ml-1"
+                    className="btn btn-sm danger ml-1"
                   >
                     Delete
                   </button>
@@ -95,6 +94,7 @@ const App = () => {
           </div>
         </div>
       ))}
+      </div>
     </div>
   );
 };

@@ -1,14 +1,34 @@
-.nav .nav-tabs .nav-item {
-  color: rgba(238, 190, 58, 0.972);
+ul {
+  padding: 20px;
+  font-family: "Roboto", sans-serif;
 }
 
 Link {
-  color: rgba(238, 190, 58, 0.972);
+  color: #fff;
 }
 .nav-tabs {
   color: red !important;
-  border-bottom: rgba(238, 190, 58, 0.972);
+  border-bottom: #fff;
 }
 .nav-item > a {
-  color: rgba(238, 190, 58, 0.972);
+  color: #fff;
+}
+
+div.nav-container {
+  background-color: #d6a0e3;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0px 20px;
+}
+
+h1.title {
+  font-family: "Alex Brush", sans-serif;
+  color: white;
+}
+
+h5.tagline {
+  font-family: "Montserrat", sans-serif;
 }

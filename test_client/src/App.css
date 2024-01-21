@@ -1,17 +1,48 @@
 .container {
-  background-color: black;
+  background-color: white;
+  padding: 0;
+  margin: 0;
+  width: 100%;
 }
 
-h1 {
-  color: rgba(238, 190, 58, 0.972);
+h1.title {
+  font-family: "Alex Brush", sans-serif;
 }
+
+h5.tagline {
+  font-family: "Montserrat", sans-serif;
+}
+
+.heading {
+  background-color: #d6a0e3;
+  padding: 10px 0;
+}
+
 a {
-  color: rgba(238, 190, 58, 0.972);
+  color: #000;
 }
-a:hover {
-  color: rgba(238, 190, 58, 0.972);
+
+a:hover,
+h2.post-title,
+p.foot-section {
+  color: #d381e8;
 }
+
 .title,
 .tagline {
   text-align: center;
+}
+
+div.post-container {
+  width: 90%;
+}
+
+button.danger {
+  border: 2px solid red;
+  color: red;
+}
+
+button.danger:hover {
+  background-color: red;
+  color: #fff;
 }
