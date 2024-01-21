@@ -4,6 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import Nav from "./Nav";
 import { authenticate, getUser } from "./helpers";
 import "./Login.css";
+import { toast } from 'react-toastify';
 
 const Login = (props) => {
   // create a state
@@ -32,11 +33,11 @@ const Login = (props) => {
         console.log(response);
         // response will contain token and name
         authenticate(response, () => props.history.push("/create"));
-        // redirect to create page
+        toast.success('Logged in successfully');
       })
       .catch((error) => {
         console.log(error.response);
-        alert(error.response.data.error);
+        toast.error(error.response.data.error);
       });
   };
 
@@ -44,7 +45,8 @@ const Login = (props) => {
     <div className="container pb-5">
       <Nav />
       <br />
-      <h1>LOGIN</h1>
+      <div className="login-box">
+      <h1 id="login-title">LOGIN</h1>
       <br />
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -70,9 +72,10 @@ const Login = (props) => {
           />
         </div>
         <div>
-          <button className="btn btn-sm btn-outline-warning">Login</button>
+          <button className="btn btn-sm">Login</button>
         </div>
       </form>
+      </div>
     </div>
   );
 };
