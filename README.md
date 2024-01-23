@@ -11,6 +11,9 @@ Caramel's Blog is your all-in-one solution for managing and creating captivating
 - [Getting Started](#getting-started)
 - [Project Structure](#project-structure)
 - [Technology Stack](#technology-stack)
+- [Contributing](#contributing)
+- [Issues](#issues)
+- [License](#license)
 
 ## Features
 
@@ -68,10 +71,18 @@ caramels_blog/
   - NodeJS
   - MongoDB for database
 
+## Contributing
+
+We welcome contributions from the community! If you'd like to contribute to Caramel's Blog, please follow our [Contribution Guidelines](link_to_contributing_guidelines).
 
 ## Issues
 
 If you encounter any issues or have suggestions, please open an issue on our GitHub repository. We appreciate your feedback!
+
+## License
+
+This project is licensed under the [MIT License](link_to_license). Feel free to use, modify, and distribute the code as per the terms of the license.
+
 
 ---
 
